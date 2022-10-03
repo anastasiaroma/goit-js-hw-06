@@ -1,18 +1,15 @@
-const categoriesToFind = document.querySelectorAll(".item");
-const categoriesLength = categoriesToFind.length;
-console.log(`Number of categories: ${categoriesLength}`);
+const categoryEl = document.querySelector('#categories');
+const itemEl = categoryEl.querySelectorAll('.item');
+const numberCategory = itemEl.length;
+console.log(`Number of categories:${numberCategory} `);
 
-categoriesToFind.forEach((category) => {
-  const groupOfElements = [...category.children];
-
-  groupOfElements.forEach((element) => {
-    if (element.tagName === "H2") {
-      console.log(`Category: ${element.textContent}`);
-    }
-  });
-  groupOfElements.forEach((element) => {
-    if (element.tagName === "UL") {
-      console.log(`Elements: ${element.children.length}`);
-    }
-  });
+const getNameCategory = categories => { 
+    return categories.forEach(element => {
+        const nameCategory = element.firstElementChild.textContent;
+        const numberInCategoryEl = element.querySelectorAll('li').length;
+        console.log(`Category: ${nameCategory}`);
+        console.log(`Elements: ${numberInCategoryEl} `);
 });
+};
+
+getNameCategory(itemEl);
